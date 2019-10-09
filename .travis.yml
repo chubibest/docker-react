@@ -1,14 +1,16 @@
 sudo: required
-language: node_js
-node_js:
-  - 'stable'
-cache:
-directories:
-  - node_modules
+# language: node_js
+# node_js:
+#   - 'stable'
+# cache:
+# directories:
+#   - node_modules
 services:
   - docker
 before_install:
   - docker build -t chubi/docker-react -f Dockerfile.dev .
 
-scripts:
+script:
   - docker run chubi/docker-react npm run test -- -- coverage
+# script:
+#   - docker run -e CI=true USERNAME/docker-react npm run test
