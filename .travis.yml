@@ -1,0 +1,8 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t chubi/docker-react -f Dockerfile.dev .
+
+scripts:
+  - docker run chubi/docker-react npm run test -- -- coverage
